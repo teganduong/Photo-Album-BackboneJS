@@ -30,6 +30,16 @@ var ImageView = Backbone.View.extend({
     this.render();
   },
 
+  events: {
+    'change #ratingOptions': 'handleChange'
+  },
+
+  handleChange: function(e) {
+    var newRating = e.target.value;
+    this.model.changeRating(newRating);
+    this.render();
+  },
+
   render: function() {
     this.$el.html(this.template(this.model.attributes));
     return this;

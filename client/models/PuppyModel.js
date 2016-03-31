@@ -8,6 +8,10 @@ var PuppyModel = Backbone.Model.extend({
 
   display: function() {
     this.trigger('display', this);
+  },
+
+  changeRating: function(newRating) {
+    this.set('rating', newRating);
   }
 
 });
