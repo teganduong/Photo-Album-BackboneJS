@@ -1,7 +1,9 @@
-.currentImage {
-  float: right;
+.currentImage, table {
+  float: left;
+  padding: 20px;
+  margin: 30px;
 }
 
-table {
-  float: left;
+select {
+  display: block;
 }
