@@ -2,8 +2,8 @@
 var AppView = Backbone.View.extend({
 
   initialize: function(params) {
-    this.imageView = new ImageView({model: this.model.get('currentImage')});
     this.titlesView = new TitlesView({collection: this.model.get('imageTitles')});
+    this.imageView = new ImageView({model: this.model.get('currentImage')});
 
     this.model.on('change:currentImage', function(model) {
       this.imageView.setImage(model.get('currentImage'));
@@ -12,8 +12,8 @@ var AppView = Backbone.View.extend({
 
   render: function() {
     return this.$el.html([
-      this.imageView.$el,
-      this.titlesView.$el
+      this.titlesView.$el,
+      this.imageView.$el
     ]);
   }
 

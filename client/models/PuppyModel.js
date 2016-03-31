@@ -1,9 +1,13 @@
-// PuppyModel.js - Defines a backbone model class for puppies.
+// PuppyModel.js - Defines a backbone model class for photos.
 var PuppyModel = Backbone.Model.extend({
+  defaults: {
+    url: 'https://www.greenfieldpuppies.com/wp-content/plugins/gfp/images/breed_chihuahua_puppies_1281630499.jpg',
+    title: 'Chihuahua Puppy',
+    rating: 5
+  },
 
-  click: function() {
-    // Triggering an event here will also trigger the event on the collection
-    this.trigger('click', this);
+  display: function() {
+    this.trigger('display', this);
   }
 
 });

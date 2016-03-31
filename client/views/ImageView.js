@@ -1,9 +1,25 @@
 // ImageView.js - Defines a backbone view class for the image display.
 var ImageView = Backbone.View.extend({
 
-  // HTML5 (native) audio tag is being used
-  // see: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video
-  el: 'div#img',
+  tagName: 'div',
+
+  template: _.template(
+    '<div class="currentImage"><tr><td><img src="<%=url%>"></td></tr>\
+     <div id="ratingOptions">\
+     <tr></td><td><%=title%></td></tr>\
+     <td>Rating: <%=rating%> of 5</td></tr>\
+     <tr><td>\
+        <select>\
+          <option value="0">Change rating:</option>\
+          <option value="0">0</option>\
+          <option value="1">1</option>\
+          <option value="2">2</option>\
+          <option value="3">3</option>\
+          <option value="4">4</option>\
+          <option value="5">5</option>\
+        </select>\
+       </div>\
+     </td></tr></div>'),
 
   initialize: function() {
     this.render();
@@ -11,14 +27,12 @@ var ImageView = Backbone.View.extend({
 
   setImage: function(image) {
     this.model = image;
-    if (!this.model) {
-      this.el.hide();
-    }
     this.render();
   },
 
   render: function() {
-    return this.$el.attr('src', this.model ? this.model.get('url') : '');
+    this.$el.html(this.template(this.model.attributes));
+    return this;
   }
 
 });
